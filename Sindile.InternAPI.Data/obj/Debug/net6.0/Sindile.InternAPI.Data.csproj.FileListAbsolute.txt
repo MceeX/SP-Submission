@@ -1,0 +1,14 @@
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.deps.json
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.runtimeconfig.json
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.dll
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\bin\Debug\net6.0\ref\Sindile.InternAPI.Data.dll
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.pdb
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.AssemblyInfoInputs.cache
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.AssemblyInfo.cs
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.dll
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\ref\Sindile.InternAPI.Data.dll
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.pdb
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.genruntimeconfig.cache
+C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.csproj.AssemblyReference.cache
