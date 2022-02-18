@@ -12,3 +12,17 @@ C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\ref\Sindile.In
 C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.pdb
 C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.genruntimeconfig.cache
 C:\Users\Admin\Dev\DotNet\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.csproj.AssemblyReference.cache
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.deps.json
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.runtimeconfig.json
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.dll
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\bin\Debug\net6.0\ref\Sindile.InternAPI.Data.dll
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\bin\Debug\net6.0\Sindile.InternAPI.Data.pdb
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.csproj.AssemblyReference.cache
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.AssemblyInfoInputs.cache
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.AssemblyInfo.cs
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.csproj.CoreCompileInputs.cache
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.dll
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\ref\Sindile.InternAPI.Data.dll
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.pdb
+C:\ProjX\SP-Submission\Sindile.InternAPI.Data\obj\Debug\net6.0\Sindile.InternAPI.Data.genruntimeconfig.cache

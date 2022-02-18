@@ -1,33 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Project\\X1\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj": {}
+    "C:\\ProjX\\SP-Submission\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj": {}
   },
   "projects": {
-    "C:\\Project\\X1\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj": {
+    "C:\\ProjX\\SP-Submission\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Project\\X1\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj",
+        "projectUniqueName": "C:\\ProjX\\SP-Submission\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj",
         "projectName": "Sindile.InternAPI.Data",
-        "projectPath": "C:\\Project\\X1\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Project\\X1\\Sindile.InternAPI.Data\\obj\\",
+        "projectPath": "C:\\ProjX\\SP-Submission\\Sindile.InternAPI.Data\\Sindile.InternAPI.Data.csproj",
+        "packagesPath": "C:\\Users\\smathibane\\.nuget\\packages\\",
+        "outputPath": "C:\\ProjX\\SP-Submission\\Sindile.InternAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\smathibane\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/TrackerZA/_packaging/Tracker/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
