@@ -1,0 +1,3 @@
+[submodule "Sindile.InternAPI"]
+	path = Sindile.InternAPI
+	url = https://github.com/MceeX/SindileSP
