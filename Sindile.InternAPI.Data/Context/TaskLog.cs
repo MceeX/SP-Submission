@@ -10,7 +10,7 @@
         public bool? Deleted { get; set; }
         public double HourlyRate { get; set; }
 
-        public virtual Intern Intern { get; set; }
+        public virtual Occupation Intern { get; set; }
         public virtual Task Task { get; set; }
     }
 }
