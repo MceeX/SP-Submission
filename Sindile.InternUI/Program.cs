@@ -1,7 +1,15 @@
+using Sindile.InternUI.Configuration;
+using Sindile.InternUI.Settings;
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddService();
+//builder.Services.Configure<IntegratedAPISettings>(Configuration.GetSection("Endpoints"));
+builder.Services.Configure<IntegratedAPISettings>(builder.Configuration.GetSection("Endpoints"));
 
 var app = builder.Build();
 
