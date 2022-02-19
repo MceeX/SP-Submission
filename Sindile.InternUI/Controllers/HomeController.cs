@@ -19,15 +19,6 @@ namespace Sindile.InternUI.Controllers
       return View();
     }
 
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddItern(Intern model)
-    {
-        //_logger.LogInformation("User forced to reset password, since its their first login");
-
-
-        return View("_InternListView");
-    }
-
     public IActionResult Privacy()
     {
       return View();

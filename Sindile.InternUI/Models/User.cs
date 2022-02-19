@@ -5,7 +5,7 @@ namespace Sindile.InternUI.Models
     /// <summary>
     /// Reprsents an employee
     /// </summary>
-    public class Intern
+    public class User
     {
         /// <summary>
         /// Gets or sets an employees identifier
@@ -23,7 +23,8 @@ namespace Sindile.InternUI.Models
         /// <summary>
         /// Gets or sets an employees date of birth
         /// </summary>
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateOfBirth { get; set; }
         /// <summary>
         /// Gets or sets an employees identity number
@@ -40,10 +41,10 @@ namespace Sindile.InternUI.Models
         /// <summary>
         /// Gets or sets an employees firstname
         /// </summary>
-        public int? RoleId { get; set; }
-        ///// <summary>
-        ///// Gets or sets the date an employee joined
-        ///// </summary>
-        //public DateTime SignOnDate { get; set; }
+        public int? OccupationId { get; set; }
+        /// <summary>
+        /// Gets or sets the date an employee joined
+        /// </summary>
+        public DateTime SignOnDate { get; set; }
     }
 }
