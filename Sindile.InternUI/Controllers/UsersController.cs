@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Sindile.InternUI.APIHelper;
 using Sindile.InternUI.Models;
 using Sindile.InternUI.Settings;
@@ -25,7 +26,7 @@ namespace Sindile.InternUI.Controllers
     }
 
     // GET: UsersController
-    public async Task<IEnumerable<User>> Index()
+    public async Task<ViewResult> Index()
     {
       List<User> users = new List<User>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
@@ -34,12 +35,12 @@ namespace Sindile.InternUI.Controllers
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonSerializer.Deserialize<List<User>>(res);
-
-        return result;
+        var result = JsonConvert.DeserializeObject<List<User>>(res);
+        ViewData["model"] = result.ToList();
+        return View("_EmployeesListView", result.ToList());
       }
 
-      return users;
+      return View(users);
     }
 
     // GET: UsersController/Details/5
@@ -54,6 +55,11 @@ namespace Sindile.InternUI.Controllers
     //{
     //  return View();
     //}
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> CreateNew()
+    {
+      return View("Create");//"~/Views/Users/Create.cshtml")
+    }
 
     // POST: UsersController/Create
     [HttpPost]
@@ -64,11 +70,11 @@ namespace Sindile.InternUI.Controllers
 
       //PostAsync(Uri uri, string content)
       
-      string requestContentJson = JsonSerializer.Serialize(model);
+      string requestContentJson = JsonConvert.SerializeObject(model);
 
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
       var response = await _apiService.PostAsync(uri, requestContentJson);
-      //return RedirectToAction(nameof(Index));
+      return RedirectToAction(nameof(Index));
       //try
       //{
       //  return RedirectToAction(nameof(Index));
@@ -93,7 +99,7 @@ namespace Sindile.InternUI.Controllers
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonSerializer.Deserialize<List<Role>>(res);
+        var result = JsonConvert.DeserializeObject<List<Role>>(res);
 
         return result;
       }
