@@ -8,8 +8,7 @@ using Sindile.InternUI.Settings;
 
 namespace Sindile.InternUI.Controllers
 {
-
-  public class JobTitlesController : Controller
+  public class TaskLogsController : Controller
   {
     private readonly IAPIService _apiService;
     private readonly IOptions<IntegratedAPISettings> _settings;
@@ -20,67 +19,75 @@ namespace Sindile.InternUI.Controllers
     /// </summary>
     /// <param name="apiService"></param>
     /// <param name="settings"></param>
-    public JobTitlesController(IAPIService apiService, IOptions<IntegratedAPISettings> settings)
+    public TaskLogsController(IAPIService apiService, IOptions<IntegratedAPISettings> settings)
     {
       _apiService = apiService;
       _settings = settings;
-      _resource = "/JobTitles";
+      _resource = "/TaskLogs";
     }
 
-    // GET: JobTitlesController
+    /// <summary>
+    /// Presents a list of task logs
+    /// </summary>
+    /// <returns></returns>
+    // GET: TaskLogsController
     public async Task<ActionResult> Index()
     {
-      List<JobTitle> jobTitle = new List<JobTitle>();
+      List<TaskLog> loggedTasks = new List<TaskLog>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonConvert.DeserializeObject<List<JobTitle>>(res);
+        var result = JsonConvert.DeserializeObject<List<TaskLog>>(res);
 
-        return View("_JobTitlesListView", result);
+        return View("_TaskLogsListView", result);
       }
-
-      return View(jobTitle);
+        return View(loggedTasks);
     }
 
-    [HttpGet]
-    // GET: JobTitlesController/Details/5
+    /// <summary>
+    /// Presents a specific task log
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    // GET: TaskLogsController/Details/5
     public async Task<ActionResult> Details(int id)
     {
-      List<JobTitle> jobTitles = new List<JobTitle>();
+      List<EmployeeLog> loggedTasks = new List<EmployeeLog>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonConvert.DeserializeObject<JobTitle>(res);
-        
-        return View("_JobTitleDetailsView", result);
+        var result = JsonConvert.DeserializeObject<TaskLog>(res);
+
+        return View("_TaskLogDetailsView", result);
       }
-      return View();
+      return View(loggedTasks);
     }
 
     /// <summary>
     /// Retrieves the Create View
     /// </summary>
     /// <returns></returns>
-    // GET: JobTitlesController/Create
+    // GET: TaskLogsController/Create
     public ActionResult Create()
     {
-      return View("_CreateJobTitle");
+      return View("_CreateTaskLogView");
     }
 
     /// <summary>
-    /// Accepts requests to create a job title
+    /// Accepts requests to log time against a task
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
+    // POST: TaskLogsController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(JobTitle model)
+    public async Task<ActionResult> Create(TaskLog model)
     {
       try
       {
@@ -96,33 +103,26 @@ namespace Sindile.InternUI.Controllers
       }
     }
 
-    /// <summary>
-    /// Retrieves the update/edit view
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    // GET: JobTitlesController/Edit/5
+    // GET: TaskLogsController/Edit/5
     public ActionResult Edit(int id)
     {
-      ViewData["id"] = id;
-      return View("_EditJobTitleView");
+      return View("_EditTaskLogView");
     }
 
     /// <summary>
-    /// Accepts job title update requests 
+    /// Accepts task log update requests
     /// </summary>
     /// <param name="id"></param>
     /// <param name="model"></param>
     /// <returns></returns>
-    // POST: JobTitlesController/Edit/5
+    // POST: TaskLogsController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(int id, JobTitle model)
+    public async Task<ActionResult> Edit(int id, TaskLog model)
     {
       try
       {
         string requestContentJson = JsonConvert.SerializeObject(model);
-
         var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
         var response = await _apiService.PutAsync(uri, requestContentJson);
 
@@ -134,22 +134,19 @@ namespace Sindile.InternUI.Controllers
       }
     }
 
-    // GET: JobTitlesController/Delete/5
+    // GET: TaskLogsController/Delete/5
     public ActionResult Delete(int id)
     {
-      //return View();
-      return RedirectToAction(nameof(DeleteJobTitle),id);
+      return View();
     }
 
-    // POST: JobTitlesController/Delete/5
+    // POST: TaskLogsController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> DeleteJobTitle(int id, JobTitle model)
+    public async Task<ActionResult> DeleteTaskLog(int id)
     {
       try
       {
-        string requestContentJson = JsonConvert.SerializeObject(model);
-
         var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
         var response = await _apiService.DeleteAsync(uri/*, requestContentJson*/);
         return RedirectToAction(nameof(Index));

@@ -10,6 +10,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddService();
 //builder.Services.Configure<IntegratedAPISettings>(Configuration.GetSection("Endpoints"));
 builder.Services.Configure<IntegratedAPISettings>(builder.Configuration.GetSection("Endpoints"));
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 

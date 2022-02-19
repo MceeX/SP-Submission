@@ -122,7 +122,7 @@ namespace Sindile.InternUI.Controllers
 
         var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
         var response = await _apiService.PutAsync(uri, requestContentJson);
-        return RedirectToAction(nameof(Index),id);
+        return RedirectToAction(nameof(Details), new { id = id });
       }
       catch
       {
