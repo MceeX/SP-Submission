@@ -63,6 +63,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0xvZ3NcX1Rhc2tMb2dzTGlzdFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_CreateTaskView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX0NyZWF0ZVRhc2tWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_TaskListView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX1Rhc2tMaXN0Vmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

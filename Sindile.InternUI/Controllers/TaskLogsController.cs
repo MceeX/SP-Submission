@@ -34,7 +34,7 @@ namespace Sindile.InternUI.Controllers
     public async Task<ActionResult> Index()
     {
       List<TaskLog> loggedTasks = new List<TaskLog>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/GetAllLogsByEmployee");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
@@ -56,7 +56,7 @@ namespace Sindile.InternUI.Controllers
     public async Task<ActionResult> Details(int id)
     {
       List<EmployeeLog> loggedTasks = new List<EmployeeLog>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/GetLogsByEmployee/{id}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
