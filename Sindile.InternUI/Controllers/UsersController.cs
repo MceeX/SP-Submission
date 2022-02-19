@@ -26,7 +26,7 @@ namespace Sindile.InternUI.Controllers
     }
 
     // GET: UsersController
-    public async Task<ViewResult> Index()
+    public async Task<ActionResult> Index()
     {
       List<User> users = new List<User>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
@@ -36,27 +36,32 @@ namespace Sindile.InternUI.Controllers
         var res = await response.Content.ReadAsStringAsync();
 
         var result = JsonConvert.DeserializeObject<List<User>>(res);
-        ViewData["model"] = result.ToList();
-        return View("_EmployeesListView", result.ToList());
+        //ViewData["model"] = result.ToList();
+        return View("_UserListView", result);
       }
 
       return View(users);
     }
 
     // GET: UsersController/Details/5
-    public ActionResult Details(int id)
+    public async Task<ActionResult> Details(int id)
     {
+      User user = new User();
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+      var response = await _apiService.GetAsync(uri);
+      if (response.IsSuccessStatusCode)
+      {
+        var res = await response.Content.ReadAsStringAsync();
 
-      return View();
+        var result = JsonConvert.DeserializeObject<User>(res);
+        //ViewData["model"] = result.ToList();
+        return View("_UserDetailsView", result);
+      }
+      return View(user);
     }
 
     //// GET: UsersController/Create
-    //public ActionResult Create(User model)
-    //{
-    //  return View();
-    //}
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> CreateNew()
+    public async Task<ActionResult> Create()
     {
       return View("Create");//"~/Views/Users/Create.cshtml")
     }
@@ -64,33 +69,27 @@ namespace Sindile.InternUI.Controllers
     // POST: UsersController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    //public ActionResult Create(IFormCollection collection)
     public async Task<ActionResult> Create(User model)
-    {
+    {      
+      try
+      {
+        string requestContentJson = JsonConvert.SerializeObject(model);
 
-      //PostAsync(Uri uri, string content)
-      
-      string requestContentJson = JsonConvert.SerializeObject(model);
-
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
-      var response = await _apiService.PostAsync(uri, requestContentJson);
-      return RedirectToAction(nameof(Index));
-      //try
-      //{
-      //  return RedirectToAction(nameof(Index));
-      //}
-      //catch
-      //{
-      //  return View();
-      //}
-
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
+        var response = await _apiService.PostAsync(uri, requestContentJson);
+        return RedirectToAction(nameof(Index));
+      }
+      catch
+      {
+        return View();
+      }
       return View();
     }
 
     [NonAction]
-    public async Task<IEnumerable<Role>> GetTitleList()
+    public async Task<IEnumerable<JobTitle>> GetTitleList()
     {
-      List<Role> roles = new List<Role>();
+      List<JobTitle> roles = new List<JobTitle>();
 
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Roles");
       var response = await _apiService.GetAsync(uri);
@@ -99,7 +98,7 @@ namespace Sindile.InternUI.Controllers
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonConvert.DeserializeObject<List<Role>>(res);
+        var result = JsonConvert.DeserializeObject<List<JobTitle>>(res);
 
         return result;
       }
@@ -109,17 +108,21 @@ namespace Sindile.InternUI.Controllers
     // GET: UsersController/Edit/5
     public ActionResult Edit(int id)
     {
-      return View();
+      return View("_EditUserView");
     }
 
     // POST: UsersController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Edit(int id, User model)
     {
       try
       {
-        return RedirectToAction(nameof(Index));
+        string requestContentJson = JsonConvert.SerializeObject(model);
+
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+        var response = await _apiService.PutAsync(uri, requestContentJson);
+        return RedirectToAction(nameof(Index),id);
       }
       catch
       {
@@ -130,16 +133,20 @@ namespace Sindile.InternUI.Controllers
     // GET: UsersController/Delete/5
     public ActionResult Delete(int id)
     {
-      return View();
+      //return View();
+      return RedirectToAction(nameof(DeleteUser), id);
     }
 
     // POST: UsersController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
+    public async Task<ActionResult> DeleteUser(int id)
     {
       try
       {
+        //string requestContentJson = JsonConvert.SerializeObject(model);
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+        var response = await _apiService.DeleteAsync(uri/*, requestContentJson*/);
         return RedirectToAction(nameof(Index));
       }
       catch

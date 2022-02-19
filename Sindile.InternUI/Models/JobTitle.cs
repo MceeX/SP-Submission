@@ -2,7 +2,7 @@
 
 namespace Sindile.InternUI.Models
 {
-    public class Role
+    public class JobTitle
     {
         /// <summary>
         /// Gets or sets the identifier for a role
@@ -12,7 +12,7 @@ namespace Sindile.InternUI.Models
         /// <summary>
         /// Gets or sets the role description/name
         /// </summary>
-        public string Role1 { get; set; }
+        public string Position { get; set; }
         /// <summary>
         /// Gets or sets the hourly rate for role
         /// </summary>
