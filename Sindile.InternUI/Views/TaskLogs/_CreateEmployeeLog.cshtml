@@ -1,0 +1,46 @@
+﻿@model Sindile.InternUI.Models.EmployeeLog
+
+<h4>EmployeeLog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <label asp-for="FirstName">Name</label>
+        <select class="form-control" id="FirstName">
+            @foreach (var user in ViewData["UsersDropList"] as IEnumerable<UserDropdown>)
+            {
+              <option>@user.FirstName</option>
+            }
+        </select>
+        <label asp-for="TaskName">Task Name</label>
+        <select class="form-control" id="FirstName">
+            @foreach (var task in ViewData["TasksDropList"] as IEnumerable<WorkTask>)
+            {
+              <option>@task.Name</option>
+            }
+        </select>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

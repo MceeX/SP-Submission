@@ -13,6 +13,8 @@ namespace Sindile.InternUI.Controllers
   {
     private readonly IAPIService _apiService;
     private readonly IOptions<IntegratedAPISettings> _settings;
+    private static string _resource = string.Empty;
+    private static string _errorHandlingView = string.Empty;
 
     /// <summary>
     /// Initializes the constructor with the api service and config options
@@ -23,13 +25,15 @@ namespace Sindile.InternUI.Controllers
     {
       _apiService = apiService;
       _settings = settings;
+      _resource = "/Users";
+      _errorHandlingView = "~/Views/Shared/Error";
     }
 
     // GET: UsersController
     public async Task<ActionResult> Index()
     {
       List<User> users = new List<User>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
@@ -40,14 +44,14 @@ namespace Sindile.InternUI.Controllers
         return View("_UserListView", result);
       }
 
-      return View(users);
+      return View(_errorHandlingView);
     }
 
     // GET: UsersController/Details/5
     public async Task<ActionResult> Details(int id)
     {
       User user = new User();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
@@ -57,7 +61,7 @@ namespace Sindile.InternUI.Controllers
         //ViewData["model"] = result.ToList();
         return View("_UserDetailsView", result);
       }
-      return View(user);
+      return View(_errorHandlingView);
     }
 
     //// GET: UsersController/Create
@@ -75,7 +79,7 @@ namespace Sindile.InternUI.Controllers
       {
         string requestContentJson = JsonConvert.SerializeObject(model);
 
-        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
         var response = await _apiService.PostAsync(uri, requestContentJson);
         return RedirectToAction(nameof(Index));
       }
@@ -83,7 +87,7 @@ namespace Sindile.InternUI.Controllers
       {
         return View();
       }
-      return View();
+      return View(_errorHandlingView);
     }
 
     [NonAction]
@@ -91,7 +95,7 @@ namespace Sindile.InternUI.Controllers
     {
       List<JobTitle> roles = new List<JobTitle>();
 
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Roles");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/JobTitles");
       var response = await _apiService.GetAsync(uri);
 
       if (response.IsSuccessStatusCode)
@@ -120,38 +124,37 @@ namespace Sindile.InternUI.Controllers
       {
         string requestContentJson = JsonConvert.SerializeObject(model);
 
-        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
         var response = await _apiService.PutAsync(uri, requestContentJson);
         return RedirectToAction(nameof(Details), new { id = id });
       }
       catch
       {
-        return View();
+        return View(_errorHandlingView);
       }
     }
 
     // GET: UsersController/Delete/5
-    public ActionResult Delete(int id)
+    public ActionResult Dismiss(int id)
     {
-      //return View();
-      return RedirectToAction(nameof(DeleteUser), id);
+      return View("_DismissEmployeeView");
     }
 
     // POST: UsersController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> DeleteUser(int id)
+    public async Task<ActionResult> DismissEmployee(int id)
     {
       try
       {
         //string requestContentJson = JsonConvert.SerializeObject(model);
-        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users/{id}");
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/Dismiss/{id}");
         var response = await _apiService.DeleteAsync(uri/*, requestContentJson*/);
         return RedirectToAction(nameof(Index));
       }
       catch
       {
-        return View();
+        return View(_errorHandlingView);
       }
     }
   }

@@ -134,17 +134,27 @@ namespace Sindile.InternUI.Controllers
       }
     }
 
+    /// <summary>
+    /// Retrieves a view for job title delete
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: JobTitlesController/Delete/5
     public ActionResult Delete(int id)
     {
-      //return View();
-      return RedirectToAction(nameof(DeleteJobTitle),id);
+      return View("_DeleteView");
     }
 
+    /// <summary>
+    /// Accepts delete job title deletion requests
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
     // POST: JobTitlesController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> DeleteJobTitle(int id, JobTitle model)
+    public async Task<ActionResult> DeleteTitle(int id, JobTitle model)
     {
       try
       {

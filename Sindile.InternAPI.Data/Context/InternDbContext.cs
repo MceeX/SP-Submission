@@ -21,7 +21,7 @@ namespace Sindile.InternAPI.Data
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserRole> UserRoles { get; set; } = null!;
         public virtual DbSet<Task> Task { get; set; } = null!;
-        public virtual DbSet<TaskLog> TaskLogs { get; set; } = null!;
+        public virtual DbSet<TaskLog> TaskLog { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

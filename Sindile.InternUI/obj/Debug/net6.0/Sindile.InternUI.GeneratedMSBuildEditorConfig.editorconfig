@@ -27,6 +27,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iVGl0bGVzXF9DcmVhdGVKb2JUaXRsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/JobTitles/_DeleteView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iVGl0bGVzXF9EZWxldGVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/JobTitles/_EditJobTitleView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iVGl0bGVzXF9FZGl0Sm9iVGl0bGVWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/TaskLogs/_CreateEmployeeLog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0xvZ3NcX0NyZWF0ZUVtcGxveWVlTG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/TaskLogs/_CreateTaskLogView.cshtml]
@@ -67,12 +75,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX0NyZWF0ZVRhc2tWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_DeleteView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX0RlbGV0ZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_EditTaskView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX0VkaXRUYXNrVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_TaskDetailsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX1Rhc2tEZXRhaWxzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Tasks/_TaskListView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcX1Rhc2tMaXN0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Users/Dismiss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGlzbWlzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Users/_EditUserView.cshtml]

@@ -33,14 +33,14 @@ namespace Sindile.InternUI.Controllers
     // GET: TaskLogsController
     public async Task<ActionResult> Index()
     {
-      List<TaskLog> loggedTasks = new List<TaskLog>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/GetAllLogsByEmployee");
+      List<EmployeeLog> loggedTasks = new List<EmployeeLog>();
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/GetAllEmployeeLogs");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
         var res = await response.Content.ReadAsStringAsync();
-
-        var result = JsonConvert.DeserializeObject<List<TaskLog>>(res);
+        ViewData["UsersDropList"] = GetUsersList().Result;
+        var result = JsonConvert.DeserializeObject<IEnumerable<EmployeeLog>>(res);
 
         return View("_TaskLogsListView", result);
       }
@@ -62,7 +62,7 @@ namespace Sindile.InternUI.Controllers
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonConvert.DeserializeObject<TaskLog>(res);
+        var result = JsonConvert.DeserializeObject<EmployeeLog>(res);
 
         return View("_TaskLogDetailsView", result);
       }
@@ -76,7 +76,9 @@ namespace Sindile.InternUI.Controllers
     // GET: TaskLogsController/Create
     public ActionResult Create()
     {
-      return View("_CreateTaskLogView");
+      ViewData["UsersDropList"] = GetUsersList().Result;
+      ViewData["TasksDropList"] = GetTasksList().Result;
+      return View("_CreateEmployeeLog");
     }
 
     /// <summary>
@@ -87,7 +89,7 @@ namespace Sindile.InternUI.Controllers
     // POST: TaskLogsController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(TaskLog model)
+    public async Task<ActionResult> Create(EmployeeLog model)
     {
       try
       {
@@ -155,6 +157,57 @@ namespace Sindile.InternUI.Controllers
       {
         return View();
       }
+    }
+
+
+    /// <summary>
+    /// Retrieves a list of users
+    /// </summary>
+    /// <returns></returns>
+    // GET: TaskLogsController
+    [NonAction]
+    public async Task<IEnumerable<UserDropdown>> GetUsersList()
+    {
+      List<UserDropdown> users = new List<UserDropdown>();
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Users");
+      var response = await _apiService.GetAsync(uri);
+      if (response.IsSuccessStatusCode)
+      {
+        var res = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<IEnumerable<User>>(res);
+
+        var usersList = from r in result
+               select new UserDropdown
+               {
+                 Id = r.Id,
+                 FirstName = r.FirstName
+               };
+        return usersList;
+      }
+      return users;
+    }
+
+    /// <summary>
+    /// Retrieves a list of tasks
+    /// </summary>
+    /// <returns></returns>
+    // GET: TaskLogsController
+    [NonAction]
+    public async Task<IEnumerable<WorkTask>> GetTasksList()
+    {
+      List<WorkTask> tasks = new List<WorkTask>();
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}/Tasks");
+      var response = await _apiService.GetAsync(uri);
+      if (response.IsSuccessStatusCode)
+      {
+        var res = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<IEnumerable<WorkTask>>(res);
+
+        return result;
+      }
+      return tasks;
     }
   }
 }

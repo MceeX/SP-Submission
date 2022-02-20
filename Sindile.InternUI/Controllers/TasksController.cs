@@ -13,6 +13,7 @@ namespace Sindile.InternUI.Controllers
     private readonly IAPIService _apiService;
     private readonly IOptions<IntegratedAPISettings> _settings;
     private static string _resource = string.Empty;
+    private static string _errorHandlingView = string.Empty;
 
     /// <summary>
     /// Initializes the constructor with the api service and config options
@@ -24,8 +25,13 @@ namespace Sindile.InternUI.Controllers
       _apiService = apiService;
       _settings = settings;
       _resource = "/Tasks";
+      _errorHandlingView = "~/Views/Shared/Error";
     }
 
+    /// <summary>
+    /// Presents a list of tasks
+    /// </summary>
+    /// <returns></returns>
     // GET: TasksController
     public async Task<ActionResult> Index()
     {
@@ -43,18 +49,43 @@ namespace Sindile.InternUI.Controllers
       return View();
     }
 
+    /// <summary>
+    /// Presents a specific task
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: TasksController/Details/5
-    public ActionResult Details(int id)
+    public async Task<ActionResult> Details(int id)
     {
+      List<WorkTask> tasks = new List<WorkTask>();
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
+      var response = await _apiService.GetAsync(uri);
+      if (response.IsSuccessStatusCode)
+      {
+        var res = await response.Content.ReadAsStringAsync();
+
+        var result = JsonConvert.DeserializeObject<WorkTask>(res);
+
+        return View("_TaskDetailsView", result);
+      }
       return View();
     }
 
+    /// <summary>
+    /// Retrieves the create view
+    /// </summary>
+    /// <returns></returns>
     // GET: TasksController/Create
     public ActionResult Create()
     {
       return View("_CreateTaskView");
     }
 
+    /// <summary>
+    /// Accepts create task requests
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     // POST: TasksController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -70,49 +101,71 @@ namespace Sindile.InternUI.Controllers
       }
       catch
       {
-        return View();
+        return View(_errorHandlingView);
       }
     }
 
+    /// <summary>
+    /// Retrieves the update view
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: TasksController/Edit/5
     public ActionResult Edit(int id)
     {
-      return View();
+      return View("_EditTaskView");
     }
 
+    /// <summary>
+    /// Accepts task update requests
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
     // POST: TasksController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Edit(int id, WorkTask model)
     {
       try
       {
-        return RedirectToAction(nameof(Index));
+        string requestContentJson = JsonConvert.SerializeObject(model);
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
+        var response = await _apiService.PutAsync(uri, requestContentJson);
+
+        return RedirectToAction(nameof(Details), new { id = id });
       }
       catch
       {
-        return View();
+        return View(_errorHandlingView);
       }
     }
 
+    /// <summary>
+    /// Retrieves the delete
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: TasksController/Delete/5
     public ActionResult Delete(int id)
     {
-      return View();
+      return View("_DeleteView");
     }
 
     // POST: TasksController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
+    public async Task<ActionResult> DeleteTask(int id)
     {
       try
       {
+        var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
+        var response = await _apiService.DeleteAsync(uri/*, requestContentJson*/);
         return RedirectToAction(nameof(Index));
       }
       catch
       {
-        return View();
+        return View(_errorHandlingView);
       }
     }
   }
