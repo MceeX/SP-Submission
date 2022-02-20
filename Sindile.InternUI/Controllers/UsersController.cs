@@ -29,6 +29,10 @@ namespace Sindile.InternUI.Controllers
       _errorHandlingView = "~/Views/Shared/Error";
     }
 
+    /// <summary>
+    /// Retrieves a list of employees
+    /// </summary>
+    /// <returns></returns>
     // GET: UsersController
     public async Task<ActionResult> Index()
     {
@@ -47,6 +51,11 @@ namespace Sindile.InternUI.Controllers
       return View(_errorHandlingView);
     }
 
+    /// <summary>
+    /// Retrieves a specific employee
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: UsersController/Details/5
     public async Task<ActionResult> Details(int id)
     {
@@ -64,12 +73,21 @@ namespace Sindile.InternUI.Controllers
       return View(_errorHandlingView);
     }
 
+    /// <summary>
+    /// Retrieves view to create an empoyee
+    /// </summary>
+    /// <returns></returns>
     //// GET: UsersController/Create
     public async Task<ActionResult> Create()
     {
       return View("Create");//"~/Views/Users/Create.cshtml")
     }
 
+    /// <summary>
+    /// Accepts requests to create a new employee
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     // POST: UsersController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -90,6 +108,10 @@ namespace Sindile.InternUI.Controllers
       return View(_errorHandlingView);
     }
 
+    /// <summary>
+    /// Retrieves job title list
+    /// </summary>
+    /// <returns></returns>
     [NonAction]
     public async Task<IEnumerable<JobTitle>> GetTitleList()
     {
@@ -109,12 +131,23 @@ namespace Sindile.InternUI.Controllers
       return roles;
     }
 
+    /// <summary>
+    /// Retrieves view to update employee
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: UsersController/Edit/5
     public ActionResult Edit(int id)
     {
       return View("_EditUserView");
     }
 
+    /// <summary>
+    /// Accepts requests to update empoyee
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
     // POST: UsersController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -134,12 +167,22 @@ namespace Sindile.InternUI.Controllers
       }
     }
 
+    /// <summary>
+    /// Retrieves the view to dismiss an employee
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // GET: UsersController/Delete/5
     public ActionResult Dismiss(int id)
     {
       return View("_DismissEmployeeView");
     }
 
+    /// <summary>
+    /// Accepts requests to dismiss an employee
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     // POST: UsersController/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
