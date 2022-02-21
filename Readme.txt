@@ -1,0 +1,1 @@
+This version doesn't use the ID Server [Sindile.IDServer]

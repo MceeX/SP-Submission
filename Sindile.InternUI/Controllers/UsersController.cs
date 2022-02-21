@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Sindile.InternUI.APIHelper;
@@ -34,6 +35,7 @@ namespace Sindile.InternUI.Controllers
     // GET: UsersController
     public async Task<ActionResult> Index()
     {
+      var accessToken = HttpContext.GetTokenAsync("access_token").Result;
       List<User> users = new List<User>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
       var response = await _apiService.GetAsync(uri);

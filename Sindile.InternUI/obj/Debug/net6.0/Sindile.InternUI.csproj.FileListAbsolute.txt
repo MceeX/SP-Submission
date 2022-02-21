@@ -248,3 +248,12 @@ C:\ProjX\SP-Submission\Sindile.InternUI\obj\Debug\net6.0\Sindile.InternUI.dll
 C:\ProjX\SP-Submission\Sindile.InternUI\obj\Debug\net6.0\ref\Sindile.InternUI.dll
 C:\ProjX\SP-Submission\Sindile.InternUI\obj\Debug\net6.0\Sindile.InternUI.pdb
 C:\ProjX\SP-Submission\Sindile.InternUI\obj\Debug\net6.0\Sindile.InternUI.genruntimeconfig.cache
+C:\ProjX\SP-Submission\Sindile.InternUI\obj\Debug\net6.0\Sindile.InternUI.csproj.AssemblyReference.cache
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\ProjX\SP-Submission\Sindile.InternUI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
