@@ -120,11 +120,20 @@ namespace Sindile.InternUI.Controllers
     // POST: TaskLogsController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(int id, TaskLog model)
+    public async Task<ActionResult> Edit(int id, EmployeeLog model)
     {
       try
       {
-        string requestContentJson = JsonConvert.SerializeObject(model);
+        var requestModel = new TaskLog
+        {
+          Id = id,
+          TaskId = model.TaskId,
+          UserId = model.UserId,
+          HourlyRate = model.HourlyRate,
+          Duration = model.Duration
+        };
+
+        string requestContentJson = JsonConvert.SerializeObject(requestModel);
         var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/{id}");
         var response = await _apiService.PutAsync(uri, requestContentJson);
 

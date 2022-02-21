@@ -41,6 +41,14 @@
                 <input asp-for="OccupationId" class="form-control" />
                 <span asp-validation-for="OccupationId" class="text-danger"></span>
             </div>
+@*               <label asp-for="OccupationId">Occupation</label>
+            <select class="form-control" id="OccupationId">
+                @foreach (var title in ViewData["TitlesDropList"] as IEnumerable<JobTitle>)
+                {
+                  <option>@title.Position</option > 
+                  <input type="hidden" asp-for="OccupationId" value="@title.Id"/>
+                }
+            </select> *@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

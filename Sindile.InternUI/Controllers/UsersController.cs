@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Sindile.InternUI.APIHelper;
 using Sindile.InternUI.Models;
 using Sindile.InternUI.Settings;
-using System.Text.Json;
 
 namespace Sindile.InternUI.Controllers
 {
@@ -44,7 +42,6 @@ namespace Sindile.InternUI.Controllers
         var res = await response.Content.ReadAsStringAsync();
 
         var result = JsonConvert.DeserializeObject<List<User>>(res);
-        //ViewData["model"] = result.ToList();
         return View("_UserListView", result);
       }
 
@@ -67,7 +64,6 @@ namespace Sindile.InternUI.Controllers
         var res = await response.Content.ReadAsStringAsync();
 
         var result = JsonConvert.DeserializeObject<User>(res);
-        //ViewData["model"] = result.ToList();
         return View("_UserDetailsView", result);
       }
       return View(_errorHandlingView);
@@ -78,9 +74,10 @@ namespace Sindile.InternUI.Controllers
     /// </summary>
     /// <returns></returns>
     //// GET: UsersController/Create
-    public async Task<ActionResult> Create()
+    public ActionResult Create()
     {
-      return View("Create");//"~/Views/Users/Create.cshtml")
+      ViewData["TitlesDropList"] = GetTitleList().Result;
+      return View("Create");
     }
 
     /// <summary>
@@ -190,7 +187,6 @@ namespace Sindile.InternUI.Controllers
     {
       try
       {
-        //string requestContentJson = JsonConvert.SerializeObject(model);
         var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/Dismiss/{id}");
         var response = await _apiService.DeleteAsync(uri/*, requestContentJson*/);
         return RedirectToAction(nameof(Index));
