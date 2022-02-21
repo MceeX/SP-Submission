@@ -49,8 +49,11 @@ namespace Sindile.InternUI.Controllers
     public async Task<ActionResult> GetAllEmployeeSalaries(DateRange model/*DateTime startDateTime, DateTime endDateTime*/)
     {
       List<EmployeeSalary> salaries = new List<EmployeeSalary>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/CalculateSalary/{model.StartDateTime}/{model.EndDateTime}");
-      var response = await _apiService.GetAsync(uri);
+
+      string requestContentJson = JsonConvert.SerializeObject(model);
+
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/CalculateSalary");
+      var response = await _apiService.PostAsync(uri, requestContentJson);
       if (response.IsSuccessStatusCode)
       {
         var res = await response.Content.ReadAsStringAsync();
@@ -68,6 +71,7 @@ namespace Sindile.InternUI.Controllers
     /// <param name="id"></param>
     /// <returns></returns>
     // GET: SalariesController/Details/
+    [Route("Details/{Id}")]
     public async Task<ActionResult> Details(int id)
     {
       ViewData["Id"] = id;
@@ -95,7 +99,7 @@ namespace Sindile.InternUI.Controllers
         //ViewData["model"] = result.ToList();
         return View("_UserListView", result);
       }
-      return View();
+      return View(_errorHandlingView);
     }
 
     // GET: SalariesController/Create

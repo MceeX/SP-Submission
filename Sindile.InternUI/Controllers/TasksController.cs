@@ -35,14 +35,14 @@ namespace Sindile.InternUI.Controllers
     // GET: TasksController
     public async Task<ActionResult> Index()
     {
-      List<TaskLog> loggedTasks = new List<TaskLog>();
+      List<WorkTask> loggedTasks = new List<WorkTask>();
       var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
         var res = await response.Content.ReadAsStringAsync();
 
-        var result = JsonConvert.DeserializeObject<List<TaskLog>>(res);
+        var result = JsonConvert.DeserializeObject<List<WorkTask>>(res);
 
         return View("_TaskListView", result);
       }
