@@ -1,0 +1,34 @@
+﻿@model Sindile.InternUI.Models.DateRange
+
+<h4>Calculate Salary</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h2>From:</h2>
+        <form asp-action="Details" asp-controller="Salaries">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StartDateTime" class="control-label"></label>
+                <input asp-for="StartDateTime" class="form-control" />
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+            <h2>To:</h2>
+            <div class="form-group">
+                <label asp-for="EndDateTime" class="control-label"></label>
+                <input asp-for="EndDateTime" class="form-control" />
+                <span asp-validation-for="EndDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Get Salary" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="TaskLogs">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

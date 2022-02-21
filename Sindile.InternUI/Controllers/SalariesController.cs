@@ -35,7 +35,7 @@ namespace Sindile.InternUI.Controllers
     // GET: SalariesController
     public ActionResult Index()
     {
-      return View();
+      return View("_SalariesCalcView");
     }
 
     /// <summary>
@@ -46,10 +46,10 @@ namespace Sindile.InternUI.Controllers
     /// <param name="endDateTime"></param>
     /// <returns></returns>
     // GET: SalariesController/Details/5
-    public async Task<ActionResult> GetAllEmployeeSalaries(DateTime startDateTime, DateTime endDateTime)
+    public async Task<ActionResult> GetAllEmployeeSalaries(DateRange model/*DateTime startDateTime, DateTime endDateTime*/)
     {
       List<EmployeeSalary> salaries = new List<EmployeeSalary>();
-      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/CalculateSalary/{startDateTime}/{endDateTime}");
+      var uri = new Uri($"{ _settings.Value.AdminAPIEndpoint}{_resource}/CalculateSalary/{model.StartDateTime}/{model.EndDateTime}");
       var response = await _apiService.GetAsync(uri);
       if (response.IsSuccessStatusCode)
       {
@@ -57,9 +57,21 @@ namespace Sindile.InternUI.Controllers
 
         var result = JsonConvert.DeserializeObject<List<EmployeeSalary>>(res);
         //ViewData["model"] = result.ToList();
-        return View("_UserListView", result);
+        return View("_EmployeeSalaryListView", result);
       }
       return View();
+    }
+
+    /// <summary>
+    /// Retrieves the details request view
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    // GET: SalariesController/Details/
+    public async Task<ActionResult> Details(int id)
+    {
+      ViewData["Id"] = id;
+      return View("_CalcSalryForEmployee");
     }
 
     /// <summary>

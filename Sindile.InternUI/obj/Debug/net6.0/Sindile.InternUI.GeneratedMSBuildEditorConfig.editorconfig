@@ -43,6 +43,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9iVGl0bGVzXF9Kb2JUaXRsZXNMaXN0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Salaries/_CalcSalryForEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsYXJpZXNcX0NhbGNTYWxyeUZvckVtcGxveWVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Salaries/_EmployeeSalaryListView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsYXJpZXNcX0VtcGxveWVlU2FsYXJ5TGlzdFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProjX/SP-Submission/Sindile.InternUI/Views/Salaries/_SalariesCalcView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsYXJpZXNcX1NhbGFyaWVzQ2FsY1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ProjX/SP-Submission/Sindile.InternUI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
